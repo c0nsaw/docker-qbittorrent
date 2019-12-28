@@ -1,0 +1,14 @@
+sudo docker create \
+  --name=qbittorrent \
+  -e PUID=1031 \
+  -e PGID=65541 \
+  -e TZ=Europe/London \
+  -e UMASK_SET=022 \
+  -e WEBUI_PORT=8080 \
+  -p 6881:6881 \
+  -p 6881:6881/udp \
+  -p 8080:8080 \
+  -v /volume1/docker/QBitorrent:/config \
+  -v /volume1/plex-media/downloads:/downloads \
+  --restart unless-stopped \
+  linuxserver/qbittorrent
